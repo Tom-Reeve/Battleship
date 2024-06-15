@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Battleship v2</title>
+    </head>
+    <body>
+        <div id="game-container">
+            <div id="settings-page" class="page">
+                <div class="page-header-wrapper">
+                    <div class="page-header">Battle Settings</div>
+                </div>
+                <div id="main-settings-container">
+                    <div id="settings">
+                        <div class="setting">
+                            <div class="setting-header">Choose Opponent Difficulty</div>
+                            <div class="options-container">
+                                <div class="choice" id="easy-wrapper">
+                                    <input type="radio" id="easy" value="easy" checked="checked" class="diff" name="diff">
+                                    <label for="easy">Easy</label>
+                                </div>
+                                <div class="choice" id="medium-wrapper">
+                                    <input type="radio" id="medium" value="medium" class="diff" name="diff">
+                                    <label for="medium">Medium</label>
+                                </div>
+                                <div class="choice" id="hard-wrapper">
+                                    <input type="radio" id="hard" value="hard" class="diff" name="diff" disabled>
+                                    <label for="hard">Hard</label>
+                                </div>
+                                <div class="choice" id="cheats-wrapper">
+                                    <input type="radio" id="cheats" value="cheats" class="diff" name="diff">
+                                    <label for="cheats">Cheats</label>
+                                </div>
+                                <div id="easy-hover" class="hover">
+                                    Chooses Cells Entirely Randomly On Each Move
+                                </div>
+                                <div id="medium-hover" class="hover">
+                                    Chooses Randomly, Until it Hits Something
+                                </div>
+                                <div id="hard-hover" class="hover">
+                                    Uses Probability Distributions to Guess Where Your Ships Are
+                                </div>
+                                <div id="cheats-hover" class="hover">
+                                    Is Given a Free Hit 25% of the Time
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting">
+                            <div class="setting-header">Choose Game Mode</div>
+                            <div class="options-container">
+                                <div class="choice" id="classic-wrapper">
+                                    <input type="radio" id="classic" value="classic" checked="checked" class="mode" name="mode">
+                                    <label for="classic">Classic</label>
+                                </div>
+                                <div class="choice" id="classic-multi-wrapper">
+                                    <input type="radio" id="classic-multi" value="classic-multi" class="mode" name="mode" disabled>
+                                    <label for="classic-multi">Classic (Multiple Shots)</label>
+                                </div>
+                                <div class="choice" id="salvo-wrapper">
+                                    <input type="radio" id="salvo" value="salvo" class="mode" name="mode" disabled>
+                                    <label for="salvo">Salvo</label>
+                                </div>
+                                <div class="choice" id="salvo-multi-wrapper">
+                                    <input type="radio" id="salvo-multi" value="salvo-multi" class="mode" name="mode" disabled>
+                                    <label for="salvo-multi">Salvo (Multiple Shots)</label>
+                                </div>
+                                <div id="classic-hover" class="hover">
+                                    One Shot Per Turn, No Exceptions
+                                </div>
+                                <div id="classic-multi-hover" class="hover">
+                                    One Shot Per Turn, Unless You Hit Something
+                                </div>
+                                <div id="salvo-hover" class="hover">
+                                    One Shot Per Remaining Ship, No Exceptions
+                                </div>
+                                <div id="salvo-multi-hover" class="hover">
+                                    One Shot Per Ship, Unless You Hit Something
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting">
+                            <div class="setting-header">Custom Options</div>
+                            <div class="options-container">
+                                <div class="choice custom" id="custom-ships-wrapper">
+                                    <input type="checkbox" id="custom-ships" value="custom-ships" class="custom-checkbox" disabled>
+                                    <label for="custom-ships">Custom Ships</label>
+                                </div>
+                                <div id="custom-hover" class="hover">
+                                    Not Yet Available in Your Region
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-footer-wrapper">
+                        <div class="page-footer">
+                            <button class="continue-button" onclick="SetupMode()">Save and Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="setup-page" class="page">
+                <div class="page-header-wrapper">
+                    <div class="page-header">Ship Setup</div>
+                </div>
+                <div id="setup-grid-wrapper" class="grid-wrapper">
+                    <div class="coords-top-left"></div>
+                    <div class="number-coords-container"></div>
+                    <div class="letter-coords-container"></div>
+                    <div id="setup-grid" class="grid"></div>
+                </div>
+                <div class="info-text-container left">
+                    <div class="info-title">Instructions</div>
+                    <div class="info-text">Select a starting co-ordinate for the current ship</div>
+                    <div class="info-text">The black markers show the ship's choosable co-ordinates</div>
+                    <div class="info-text">The name and length of each ship are displayed on the right screen</div>
+                    <div class="info-text">Once all 5 ships have been placed, the game can begin</div>
+                </div>
+                <div class="info-text-container right">
+                    <div class="info-title">Ship Info</div>
+                    <div class="info-text">Current Ship Name:</div>
+                    <span id="ship-name" class="info-text">0</span>
+                    <div class="info-text">Ship Length:</div>
+                    <span id="ship-length" class="info-text">0</span>
+                    <div class="info-text">Ships Remaining:</div>
+                    <span id="ships-left" class="info-text">0</span>
+                </div>
+                <div class="page-footer-wrapper">
+                <div class="page-footer">
+                    <button class="continue-button" onclick="Play()">Play</button>
+                </div>
+            </div>
+            </div>
+            <div id="game-page" class="page">
+                <div id="computer-grid-wrapper" class="grid-wrapper">
+                    <div class="coords-top-left-mini"></div>
+                    <div class="number-coords-container-mini"></div>
+                    <div class="letter-coords-container-mini"></div>
+                    <div id="computer-grid" class="grid-mini"></div>
+                </div>
+                <button id="restart" onclick="Restart()" disabled>Play Again</button>
+                <div id="player-grid-wrapper" class="grid-wrapper">
+                    <div class="coords-top-left-mini"></div>
+                    <div class="number-coords-container-mini"></div>
+                    <div class="letter-coords-container-mini"></div>
+                    <div id="player-grid" class="grid-mini"></div>
+                </div>
+                <div class="info-text-container left-large">
+                    <div class="info-title">Player Ships Remanining</div>
+                    <div id="player-hit-info" class="hit-info"></div>
+                    <div id="player-ship-info-container" class="ship-info"></div>
+                </div>
+                <div class="info-text-container right-large">
+                    <div class="info-title">Computer Ships Remaining</div>
+                    <div id="computer-hit-info" class="hit-info"></div>
+                    <div id="computer-ship-info-container" class="ship-info"></div>
+                </div>
+            </div>
+        </div>
+        <script src="setup.js"></script>
+        <script src="game.js"></script>
+    </body>
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
