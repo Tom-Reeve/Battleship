@@ -59,7 +59,6 @@
     bottom: 16px;
 }
 #setupPage {
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -118,5 +117,32 @@
 
     float: left;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     outline: 1px solid;
+}
+.marker {
+    width: 75%;
+    height: 75%;
+
+    border-radius: 50%;
+
+    background-color: yellow;
+}
+.startMarker {
+    width: 75%;
+    height: 75%;
+
+    border-radius: 50%;
+
+    background-color: green;
+}
+.ship {
+    width: 75%;
+    height: 75%;
+
+    border-radius: 50%;
+    background-color: grey;
 }

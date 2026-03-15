@@ -2,6 +2,8 @@ const pages = document.getElementsByClassName("page");
 const setupGrid = document.getElementById("setupGridWrapper");
 const cellGrid = document.getElementById("setupGrid");
 
+let player = new Player();
+
 function newPage(pageNum) {
     for (let i = 0 ; i < pages.length ; i++) {
         pages[i].style.display = "none";
@@ -36,9 +38,18 @@ function createGrid(outer, inner) {
 
     for (let i = 0 ; i < 100 ; i++) {
         let cell = document.createElement("div");
+
+        cell.index = i;
+        cell.x = i % 10;
+        cell.y = Math.floor(i / 10);
+
+        cell.hasShip = false;
+        player.cells.push(cell);
+
         cell.setAttribute("class", "gridCell");
         inner.appendChild(cell);
     }
+    player.setCells();
 
     outer.appendChild(numRow);
     outer.appendChild(letterCol);
