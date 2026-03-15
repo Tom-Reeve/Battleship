@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+        <title>Battleship</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id="siteContainer">
+            <div id="pagesContainer">
+                <div id="startPage" class="page">
+                    <div id="startMenuContainer">
+                        <div class="startMenuWrapper">
+                            <button id="startButton" class="startMenuButton" onclick="newPage(1)">New Game</button>
+                        </div>
+                        <div class="startMenuSpacer"></div>
+                        <div class="startMenuWrapper">
+                            <button id="statsButton" class="startMenuButton">Stats</button>
+                        </div>
+                        <div class="startMenuSpacer"></div>
+                        <div class="startMenuWrapper">
+                            <button id="settingsButton" class="startMenuButton">Settings</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="newGamePage" class="page">
+                    <div id="newGameStartWrapper">
+                        <button id="newGameButton" class="startMenuButton" onclick="newPage(2)">Start</button>
+                    </div>
+                </div>
+                <div id="setupPage" class="page">
+                    <div id="setupGridWrapper">
+                        <div id="setupGrid"></div>
+                    </div>
+                </div>
+                <div id="settingsPage" class="page">
+                    SETTINGS PAGE
+                </div>
+            </div>
+        </div>
+        <script src="setup.js"></script>
+    </body>
+</HTML>

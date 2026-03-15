@@ -1,0 +1,122 @@
+#siteContainer {
+    display: flex;
+    position: absolute;
+    height: auto;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#pagesContainer {
+    width: 100%;
+    height: 100%;
+}
+.page {
+    width: 100%;
+    height: 100%;
+}
+#startPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#newGamePage, #setupPage, #settingsPage {
+    display: none;
+}
+#startMenuContainer {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+.startMenuWrapper {
+    width: 100%;
+    height: 20%; 
+}
+.startMenuButton {
+    width: 100%;
+    height: 100%;
+}
+.startMenuSpacer {
+    width: 100%;
+    height: 64px;
+}
+#newGameStartWrapper {
+    width: 100%;
+    height: 128px;
+
+    position: absolute;
+    bottom: 16px;
+}
+#setupPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#setupGridWrapper {
+    width: 800px;
+    height: 800px;
+
+    position: relative;
+
+    outline: 1px solid;
+}
+.titleRow {
+    width: 750px;
+    height: 50px;
+
+    float: right;
+}
+.title {
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titleCol {
+    width: 50px;
+    height: 750px;
+
+    position: absolute;
+    bottom: 0;
+
+    flex-direction: column;
+}
+.titleCellRow {
+    width: 75px;
+    height: 100%;
+
+    float: left;
+}
+.titleCellCol {
+    width: 100%;
+    height: 75px;
+}
+#setupGrid {
+    width: 750px;
+    height: 750px;
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+}
+.gridCell {
+    width: 75px;
+    height: 75px;
+
+    float: left;
+
+    outline: 1px solid;
+}
